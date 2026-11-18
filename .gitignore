@@ -5,6 +5,13 @@ node_modules/
 .vitepress/dist/
 .vitepress/cache/
 
+# Brand assets synced from brand/ submodule via scripts/sync-brand.mjs
+src/public/brand/
+src/public/favicon.svg
+src/public/favicon.ico
+src/public/apple-touch-icon.png
+src/public/og-image.png
+
 # OS & Editor files
 .DS_Store
 Thumbs.db

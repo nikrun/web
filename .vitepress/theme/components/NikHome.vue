@@ -2,6 +2,7 @@
 import { computed, onMounted, ref } from 'vue'
 import NikAction from './NikAction.vue'
 import NikCommentBlock from './NikCommentBlock.vue'
+import NikLogo from './NikLogo.vue'
 import NikTerminal from './NikTerminal.vue'
 
 type OsBranch = 'windows' | 'unix' | 'other'
@@ -174,7 +175,10 @@ onMounted(() => {
 
       <!-- Program End Line -->
       <footer class="nik-footer-line">
-        <span class="nik-kw">end</span><span class="nik-punct">.</span>
+        <div><span class="nik-kw">end</span><span class="nik-punct">.</span></div>
+        <div class="nik-colophon">
+          <NikLogo class="nik-colophon-logo" />
+        </div>
       </footer>
     </main>
   </div>

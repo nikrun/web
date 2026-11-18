@@ -6,7 +6,10 @@
   "description": "Nikrun website and documentation (VitePress)",
   "type": "module",
   "scripts": {
+    "sync-brand": "node scripts/sync-brand.mjs",
+    "predev": "npm run sync-brand",
     "dev": "vitepress dev",
+    "prebuild": "npm run sync-brand",
     "build": "vitepress build",
     "preview": "vitepress preview",
     "clean": "node -e \"const fs=require('fs'); for (const d of ['.vitepress/dist', '.vitepress/cache']) if(fs.existsSync(d)) fs.rmSync(d, {recursive:true, force:true});\""

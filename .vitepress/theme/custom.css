@@ -268,3 +268,15 @@ body {
 .nik-footer-line {
   margin-top: var(--nik-lh);
 }
+
+.nik-colophon {
+  margin-top: calc(var(--nik-lh) * 2);
+  display: flex;
+  justify-content: center;
+}
+
+.nik-colophon-logo {
+  width: 72px;
+  height: 72px;
+  display: block;
+}

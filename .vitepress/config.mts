@@ -1,18 +1,35 @@
 import { defineConfig } from 'vitepress'
 
-const faviconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#0b0f14"/><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#38bdf8" stroke-width="2"/><text x="16" y="22" font-family="monospace" font-size="18" font-weight="bold" fill="#facc15" text-anchor="middle">n;</text></svg>`
+const siteTitle = 'Nikrun — Modern Toolchain for Free Pascal'
+const siteDescription =
+  'Modern, zero-config toolchain for Free Pascal: portable multi-arch SDKs, declarative nik.yaml builds, LSP, and VS Code support in one tool.'
+const siteUrl = 'https://nikrun.dev'
 
 export default defineConfig({
   title: 'Nikrun',
-  description:
-    'Modern, zero-config toolchain for Free Pascal: portable multi-arch SDKs, declarative nik.yaml builds, LSP, and VS Code support in one tool.',
+  description: siteDescription,
   srcDir: 'src',
   cleanUrls: true,
   appearance: 'force-dark',
 
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: `data:image/svg+xml,${encodeURIComponent(faviconSvg)}` }],
-    ['meta', { name: 'theme-color', content: '#0b0e14' }]
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+    ['link', { rel: 'icon', type: 'image/x-icon', sizes: 'any', href: '/favicon.ico' }],
+    ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }],
+    ['meta', { name: 'theme-color', content: '#0b0e14' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:site_name', content: 'Nikrun' }],
+    ['meta', { property: 'og:title', content: siteTitle }],
+    ['meta', { property: 'og:description', content: siteDescription }],
+    ['meta', { property: 'og:url', content: `${siteUrl}/` }],
+    ['meta', { property: 'og:image', content: `${siteUrl}/og-image.png` }],
+    ['meta', { property: 'og:image:width', content: '1200' }],
+    ['meta', { property: 'og:image:height', content: '630' }],
+    ['meta', { property: 'og:image:alt', content: siteTitle }],
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { name: 'twitter:title', content: siteTitle }],
+    ['meta', { name: 'twitter:description', content: siteDescription }],
+    ['meta', { name: 'twitter:image', content: `${siteUrl}/og-image.png` }]
   ],
 
   markdown: {
@@ -21,6 +38,11 @@ export default defineConfig({
 
   // Pre-configured for future documentation under src/docs/
   themeConfig: {
+    logo: {
+      light: '/brand/nikrun-icon-light.svg',
+      dark: '/brand/nikrun-icon-dark-mono.svg',
+      alt: 'Nikrun'
+    },
     siteTitle: 'nikrun',
     nav: [
       { text: 'Home', link: '/' },
