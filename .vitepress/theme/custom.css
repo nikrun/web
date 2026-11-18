@@ -1,0 +1,270 @@
+/* ==========================================================================
+   Nikrun Website & Docs — Dark Terminal Editor Theme
+   ========================================================================== */
+
+:root {
+  --nik-font-mono: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', 'SFMono-Regular',
+    Consolas, 'Liberation Mono', Menlo, monospace;
+  --nik-lh: 24px;
+
+  --nik-bg: #0b0e14;
+  --nik-border-strong: #334259;
+
+  --nik-fg: #d8dee9;
+  --nik-fg-strong: #f1f5f9;
+  --nik-fg-muted: #7c8b9e;
+
+  --nik-accent: #38bdf8;       /* ANSI Cyan */
+  --nik-secondary: #facc15;    /* ANSI Yellow */
+  --nik-str: #4ade80;          /* Pascal String Literal Green */
+  --nik-directive: #c084fc;    /* Compiler Directive Purple */
+  --nik-comment-hero: #8294ab;
+  --nik-comment-inline: #7d8fa6;
+
+  /* Map VitePress typography & colors for future documentation under /docs */
+  --vp-font-family-base: var(--nik-font-mono);
+  --vp-font-family-mono: var(--nik-font-mono);
+  --vp-c-bg: #0b0e14;
+  --vp-c-bg-soft: #10151f;
+  --vp-c-bg-alt: #0e121a;
+  --vp-c-text-1: #e2e8f0;
+  --vp-c-text-2: #94a3b8;
+  --vp-c-brand-1: #38bdf8;
+  --vp-c-brand-2: #facc15;
+  --vp-c-divider: #1e2736;
+}
+
+/* ==========================================================================
+   Base & Strict Editor Baseline Grid (--nik-lh: 24px, 2ch indentation)
+   ========================================================================== */
+
+html,
+body {
+  background-color: var(--nik-bg);
+  color: var(--nik-fg);
+  font-family: var(--nik-font-mono);
+  font-size: 14px;
+  line-height: var(--nik-lh);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hide VitePress mobile VPLocalNav on the custom single-page home */
+.Layout:has(.nik-canvas) .VPLocalNav {
+  display: none !important;
+}
+
+.nik-canvas {
+  min-height: 100vh;
+  background-color: var(--nik-bg);
+  color: var(--nik-fg);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Enforce uniform line-height & zero browser margins inside the source sheet */
+.nik-sheet,
+.nik-sheet h1,
+.nik-sheet h2,
+.nik-sheet p {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  line-height: var(--nik-lh);
+}
+
+.nik-sheet {
+  width: 100%;
+  max-width: 1140px;
+  margin: calc(var(--nik-lh) * 1.5) auto calc(var(--nik-lh) * 3);
+  padding: 0 2ch;
+}
+
+/* ==========================================================================
+   Unified Interactive System (.nik-action)
+   ========================================================================== */
+
+:where(.nik-action) {
+  appearance: none;
+  display: inline;
+  background: transparent;
+  border: none;
+  padding: 0 0.25ch;
+  margin: 0 -0.25ch;
+  font: inherit;
+  line-height: inherit;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.12s ease;
+}
+
+.nik-sheet .nik-action:hover,
+.nik-sheet .nik-action:focus-visible {
+  background-color: color-mix(in srgb, currentColor 18%, transparent);
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  text-underline-offset: 3px;
+  outline: none;
+}
+
+/* ==========================================================================
+   Pascal Syntax & Source Structure
+   ========================================================================== */
+
+.nik-header-line {
+  margin-bottom: var(--nik-lh);
+}
+
+.nik-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 1ch;
+  flex-wrap: wrap;
+}
+
+.nik-kw {
+  color: var(--nik-accent);
+  font-weight: 600;
+}
+
+.nik-brand-name {
+  color: var(--nik-fg-strong);
+  font-weight: 700;
+}
+
+.nik-directive {
+  color: var(--nik-directive);
+}
+
+.nik-call,
+.nik-punct {
+  color: var(--nik-fg-muted);
+}
+
+.nik-fn {
+  color: var(--nik-secondary);
+  font-weight: 700;
+}
+
+.nik-ident {
+  color: var(--nik-fg-strong);
+  font-weight: 600;
+}
+
+.nik-str {
+  color: var(--nik-str);
+}
+
+.nik-hero {
+  padding: 0;
+}
+
+.nik-source-comments {
+  color: var(--nik-comment-hero);
+}
+
+.nik-cm-line {
+  font-weight: 400;
+  letter-spacing: normal;
+  color: inherit;
+}
+
+.nik-comment-wrap {
+  position: relative;
+}
+
+.nik-ch-ruler {
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+  white-space: pre;
+}
+
+.nik-inline-comment {
+  color: var(--nik-comment-inline);
+}
+
+.nik-blank-line {
+  height: var(--nik-lh);
+}
+
+.nik-uses-block {
+  margin-top: var(--nik-lh);
+  color: var(--nik-fg);
+}
+
+.nik-indent {
+  padding-left: 2ch;
+}
+
+.nik-code-kw-line {
+  line-height: var(--nik-lh);
+}
+
+.nik-entry-block {
+  margin-top: var(--nik-lh);
+}
+
+/* Exact 2ch indent with subtle editor indent guide & zero vertical extra gap */
+.nik-block-body {
+  margin: 0 0 0 0.5ch;
+  padding: 0 0 0 calc(1.5ch - 1px);
+  border-left: 1px solid var(--nik-border-strong);
+}
+
+.nik-proc {
+  scroll-margin-top: var(--nik-lh);
+  margin-top: var(--nik-lh);
+}
+
+.nik-proc-sig {
+  font-weight: 600;
+  letter-spacing: normal;
+  color: var(--nik-fg-strong);
+}
+
+/* Conditional Compilation ({$IFDEF} ... {$ELSEIF} ... {$ELSE} ... {$ENDIF}) */
+.nik-ifdef-block {
+  margin: 0;
+}
+
+.nik-ifdef-branch {
+  padding-left: 2ch;
+  transition: opacity 0.15s ease, filter 0.15s ease;
+}
+
+.nik-ifdef-branch.is-inactive {
+  opacity: 0.36;
+  filter: saturate(0.2);
+}
+
+.nik-ifdef-branch.is-inactive:hover,
+.nik-ifdef-branch.is-inactive:focus-within {
+  opacity: 1;
+  filter: none;
+}
+
+.nik-terminal-stmt {
+  line-height: var(--nik-lh);
+}
+
+.nik-sheet code {
+  font-family: var(--nik-font-mono);
+  font-size: inherit;
+  line-height: inherit;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-weight: 400;
+}
+
+.nik-sheet code.nik-pas-stmt {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.nik-footer-line {
+  margin-top: var(--nik-lh);
+}
