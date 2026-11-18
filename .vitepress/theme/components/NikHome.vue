@@ -166,8 +166,27 @@ onMounted(() => {
         <div class="nik-code-kw-line"><span class="nik-kw">begin</span></div>
 
         <div class="nik-block-body">
-          <p class="nik-inline-comment">// Coming soon</p>
-          <p class="nik-inline-comment">// OpenURL('https://nikrun.dev/docs');</p>
+          <p class="nik-inline-comment">// Guides, nik.yaml &amp; CLI reference</p>
+          <div class="nik-terminal-stmt">
+            <code class="nik-pas-stmt">
+              <span class="nik-fn">OpenURL</span><span class="nik-punct">(</span><NikAction href="/docs/" tooltip="Open Nikrun Documentation" class="nik-str">'/docs/'</NikAction><span class="nik-punct">);</span>
+            </code>
+          </div>
+          <div class="nik-terminal-stmt">
+            <code class="nik-pas-stmt">
+              <span class="nik-fn">OpenURL</span><span class="nik-punct">(</span><NikAction href="/docs/quickstart" tooltip="Open Quickstart" class="nik-str">'/docs/quickstart'</NikAction><span class="nik-punct">);</span>
+            </code>
+          </div>
+          <div class="nik-terminal-stmt">
+            <code class="nik-pas-stmt">
+              <span class="nik-fn">OpenURL</span><span class="nik-punct">(</span><NikAction href="/docs/reference/manifest" tooltip="Open Manifest &amp; Lockfile Reference" class="nik-str">'/docs/reference/manifest'</NikAction><span class="nik-punct">);</span>
+            </code>
+          </div>
+          <div class="nik-terminal-stmt">
+            <code class="nik-pas-stmt">
+              <span class="nik-fn">OpenURL</span><span class="nik-punct">(</span><NikAction href="/docs/reference/cli" tooltip="Open CLI Reference" class="nik-str">'/docs/reference/cli'</NikAction><span class="nik-punct">);</span>
+            </code>
+          </div>
         </div>
 
         <div class="nik-code-kw-line"><span class="nik-kw">end</span><span class="nik-punct">;</span></div>

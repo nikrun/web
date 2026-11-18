@@ -46,22 +46,48 @@ export default defineConfig({
     siteTitle: 'nikrun',
     nav: [
       { text: 'Home', link: '/' },
-      // Uncomment when publishing documentation:
-      // { text: 'Docs', link: '/docs/' },
-      { text: 'GitHub', link: 'https://github.com/nikrun/cli' }
+      { text: 'Docs', link: '/docs/', activeMatch: '^/docs/' },
+      { text: 'GitHub', link: 'https://github.com/nikrun' }
     ],
     sidebar: {
       '/docs/': [
         {
-          text: 'Documentation',
+          text: 'Getting Started',
           items: [
-            { text: 'Overview', link: '/docs/' }
+            { text: 'Overview', link: '/docs/' },
+            { text: 'Installation', link: '/docs/installation' },
+            { text: 'Quickstart', link: '/docs/quickstart' }
+          ]
+        },
+        {
+          text: 'Core Workflow',
+          items: [
+            { text: 'SDK', link: '/docs/sdks' },
+            { text: 'Project', link: '/docs/projects' },
+            { text: 'Building', link: '/docs/builds' },
+            { text: 'Packages', link: '/docs/packages' }
+          ]
+        },
+        {
+          text: 'Editor & Automation',
+          items: [
+            { text: 'VS Code & Language Server', link: '/docs/vscode-and-lsp' },
+            { text: 'CI/CD & AI Agents', link: '/docs/ci-and-agents' }
+          ]
+        },
+        {
+          text: 'Reference',
+          items: [
+            { text: 'CLI', link: '/docs/reference/cli' },
+            { text: 'Manifest & Lockfile', link: '/docs/reference/manifest' },
+            { text: 'Paths & Environment', link: '/docs/reference/environment' },
+            { text: 'FAQ & Licensing', link: '/docs/reference/faq' }
           ]
         }
       ]
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/nikrun/cli' }
+      { icon: 'github', link: 'https://github.com/nikrun' }
     ],
     search: {
       provider: 'local'
