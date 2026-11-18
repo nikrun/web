@@ -54,9 +54,10 @@ onMounted(() => {
       <!-- Program Header Comments, Uses Clause & Main Entry TOC -->
       <section class="nik-hero">
         <div class="nik-source-comments">
-          <h1 class="nik-cm-line">
-            // Modern, zero-config toolchain for Free Pascal. (<NikAction href="https://github.com/nikrun/">github.com/nikrun/</NikAction>)
-          </h1>
+          <h1 class="nik-cm-line">// Modern, zero-config toolchain for Free Pascal.</h1>
+          <p class="nik-cm-line">
+            // Documentation: <NikAction href="/docs/" tooltip="Open Nikrun Documentation">nikrun.dev/docs</NikAction> &middot; GitHub: <NikAction href="https://github.com/nikrun/">github.com/nikrun</NikAction>
+          </p>
           <p class="nik-cm-line" aria-hidden="true">//</p>
           <NikCommentBlock :text="introComment" />
         </div>
