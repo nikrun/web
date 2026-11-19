@@ -13,11 +13,15 @@ Run the one-line installer in your terminal to set up the latest `stable` releas
 
 ::: code-group
 
-```powershell [Windows (PowerShell)]
+```powershell [Windows]
 irm https://nikrun.dev/install.ps1 | iex
 ```
 
-```bash [Linux / macOS]
+```bash [Linux]
+curl -fsSL https://nikrun.dev/install.sh | bash
+```
+
+```bash [macOS]
 curl -fsSL https://nikrun.dev/install.sh | bash
 ```
 
@@ -38,21 +42,21 @@ nik --version
 
 Re-running the script at any time updates an existing `nik` installation in place without affecting installed SDKs or caches.
 
-### Options
+### Flags & Variables
 
 Use environment variables or script flags to select the `insider` channel, install a specific version, or customize setup behavior:
 
-| Option / Variable | Platform | Description |
+| Flag / Variable | Platform | Description |
 | :--- | :--- | :--- |
-| `NIKRUN_CHANNEL` / `-c`, `--channel` | All | Release channel: `stable` (default) or `insider`. |
-| `NIKRUN_VERSION` / `-v`, `--version` | All | Exact version or Git tag to install (e.g. `0.1.0` or `v0.1.0`). |
+| `NIKRUN_CHANNEL`<br>`-c`<br>`--channel` | All | Release channel: `stable` (default) or `insider`. |
+| `NIKRUN_VERSION`<br>`-v`<br>`--version` | All | Exact version or Git tag to install (e.g. `0.1.0` or `v0.1.0`). |
 | `NIKRUN_HOME` | All | Custom installation root (defaults to `~/.nikrun` or `%USERPROFILE%\.nikrun`). |
 | `--no-modify-path` | Linux / macOS | Do not append `~/.nikrun/bin` to `.bashrc`, `.zshrc`, or `config.fish`. |
-| `GITHUB_TOKEN` / `GH_TOKEN` | All | Optional GitHub token used to avoid API rate limits in CI runners. |
+| `GITHUB_TOKEN`<br>`GH_TOKEN` | All | Optional GitHub token used to avoid API rate limits in CI runners. |
 
 ::: code-group
 
-```powershell [Windows (PowerShell)]
+```powershell [Windows]
 # Install from the insider channel
 $env:NIKRUN_CHANNEL = 'insider'; irm https://nikrun.dev/install.ps1 | iex
 
@@ -60,7 +64,15 @@ $env:NIKRUN_CHANNEL = 'insider'; irm https://nikrun.dev/install.ps1 | iex
 $env:NIKRUN_VERSION = '0.1.0'; irm https://nikrun.dev/install.ps1 | iex
 ```
 
-```bash [Linux / macOS]
+```bash [Linux]
+# Install from the insider channel
+curl -fsSL https://nikrun.dev/install.sh | bash -s -- --channel insider
+
+# Install a specific version without modifying shell profiles
+curl -fsSL https://nikrun.dev/install.sh | bash -s -- --version 0.1.0 --no-modify-path
+```
+
+```bash [macOS]
 # Install from the insider channel
 curl -fsSL https://nikrun.dev/install.sh | bash -s -- --channel insider
 
@@ -84,7 +96,7 @@ The uninstaller stops running `nik` processes (such as `nik lsp`), removes `~/.n
 
 ::: code-group
 
-```powershell [Windows (PowerShell)]
+```powershell [Windows]
 # Interactive (asks whether to keep or delete installed SDKs and caches)
 irm https://nikrun.dev/uninstall.ps1 | iex
 
@@ -92,7 +104,15 @@ irm https://nikrun.dev/uninstall.ps1 | iex
 & "$env:USERPROFILE\.nikrun\uninstall.ps1" -Purge -NonInteractive
 ```
 
-```bash [Linux / macOS]
+```bash [Linux]
+# Interactive (asks whether to keep or delete installed SDKs and caches)
+curl -fsSL https://nikrun.dev/uninstall.sh | bash
+
+# Non-interactive: remove everything including ~/.nikrun/sdks and ~/.nikrun/cache
+~/.nikrun/uninstall.sh --purge --non-interactive
+```
+
+```bash [macOS]
 # Interactive (asks whether to keep or delete installed SDKs and caches)
 curl -fsSL https://nikrun.dev/uninstall.sh | bash
 

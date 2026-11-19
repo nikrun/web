@@ -1,16 +1,16 @@
 # CLI
 
-Complete command and option reference for the `nik` executable.
+Complete command and flag reference for the `nik` executable.
 
 ```text
-nik [GLOBAL OPTIONS] <COMMAND> [ARGS]
+nik [GLOBAL FLAGS] <COMMAND> [ARGS]
 ```
 
-## Global Options
+## Global Flags
 
 Accepted before or after any `<COMMAND>`:
 
-| Option | Description |
+| Flag | Description |
 | :--- | :--- |
 | `--nikrun-home <DIR>` | Override the Nikrun root directory (defaults to `~/.nikrun` or `$NIKRUN_HOME`). |
 | `--no-color` | Disable ANSI colored output (also enabled automatically when `NO_COLOR` is non-empty or `stdout` is not a TTY). |
@@ -22,10 +22,10 @@ Accepted before or after any `<COMMAND>`:
 Scaffold a new Free Pascal project (`nik.yaml`, `.gitignore`, and starter source file).
 
 ```text
-nik init [<DIR>] [OPTIONS]
+nik init [<DIR>] [FLAGS]
 ```
 
-| Argument / Option | Default | Description |
+| Argument / Flag | Default | Description |
 | :--- | :--- | :--- |
 | `[<DIR>]` | `.` | Target directory (created if it does not exist). |
 | `--program` | *(default)* | Initialize an executable application (`program`). |
@@ -42,10 +42,10 @@ nik init [<DIR>] [OPTIONS]
 Compile a `program` or `library` project using `nik.yaml`.
 
 ```text
-nik build [OPTIONS]
+nik build [FLAGS]
 ```
 
-| Option | Default | Description |
+| Flag | Default | Description |
 | :--- | :--- | :--- |
 | `-p`, `--profile <NAME>` | `debug` | Build using the named profile from `nik.yaml`. |
 | `-m`, `--manifest <PATH>` | `./nik.yaml` | Path to `nik.yaml` (`nik.yml`) or project directory. |
@@ -63,7 +63,7 @@ Fetch, update, list, and inspect project dependencies declared in `nik.yaml`.
 
 Download and verify all dependencies declared across `nik.yaml` (`dependencies`, `test.dependencies`, `targets`, `profiles`) and sync `nik.lock`.
 
-| Option | Default | Description |
+| Flag | Default | Description |
 | :--- | :--- | :--- |
 | `-m`, `--manifest <PATH>` | `./nik.yaml` | Path to `nik.yaml` or project directory. |
 | `--locked` | `false` | Require `nik.lock` to be in sync without modifying it. |
@@ -74,7 +74,7 @@ Download and verify all dependencies declared across `nik.yaml` (`dependencies`,
 
 Upgrade locked SemVer versions in `nik.lock` to the newest compatible Git tags within `nik.yaml` constraints.
 
-| Argument / Option | Default | Description |
+| Argument / Flag | Default | Description |
 | :--- | :--- | :--- |
 | `[<NAME>]` | *(all packages)* | Specific dependency alias from `nik.yaml` to upgrade. |
 | `-m`, `--manifest <PATH>` | `./nik.yaml` | Path to `nik.yaml` or project directory. |
@@ -84,7 +84,7 @@ Upgrade locked SemVer versions in `nik.lock` to the newest compatible Git tags w
 
 List resolved direct and transitive dependencies, resolved versions/commits, and cache paths.
 
-| Option | Default | Description |
+| Flag | Default | Description |
 | :--- | :--- | :--- |
 | `-p`, `--profile <NAME>` | `debug` | Resolve dependency graph for the named profile. |
 | `--test` | `false` | Include `test.dependencies` in resolution. |
@@ -106,7 +106,7 @@ Discover, install, update, inspect, and remove portable Free Pascal SDKs under `
 
 ### `list`
 
-| Option | Default | Description |
+| Flag | Default | Description |
 | :--- | :--- | :--- |
 | `-r`, `--remote` | `false` | Query remote `index.json` instead of locally installed SDKs. |
 | `--version <VER>` | *(all)* | Filter by FPC version (e.g. `3.2.4`, `3.3.1`). |
@@ -118,10 +118,10 @@ Discover, install, update, inspect, and remove portable Free Pascal SDKs under `
 ### `install`
 
 ```text
-nik sdk install <VERSION|PATH> [OPTIONS]
+nik sdk install <VERSION|PATH> [FLAGS]
 ```
 
-| Argument / Option | Default | Description |
+| Argument / Flag | Default | Description |
 | :--- | :--- | :--- |
 | `<VERSION\|PATH>` | *(required)* | Exact FPC version (e.g. `3.2.4`, `3.3.1`) or path to a local SDK `.zip` / directory. |
 | `-f`, `--force` | `false` | Reinstall even if the matching SDK is already installed. |
@@ -133,10 +133,10 @@ nik sdk install <VERSION|PATH> [OPTIONS]
 ### `update`
 
 ```text
-nik sdk update [<VERSION>] [OPTIONS]
+nik sdk update [<VERSION>] [FLAGS]
 ```
 
-| Argument / Option | Default | Description |
+| Argument / Flag | Default | Description |
 | :--- | :--- | :--- |
 | `[<VERSION>]` | *(all installed)* | Specific installed FPC version to update. |
 | `--skip-verify` | `false` | Skip SHA-256 checksum verification. |
@@ -157,10 +157,10 @@ nik sdk uninstall <VERSION> [--os <OS>] [--arch <CPU>]
 Start the built-in Free Pascal Language Server (LSP 3.17).
 
 ```text
-nik lsp [OPTIONS]
+nik lsp [FLAGS]
 ```
 
-| Option | Default | Description |
+| Flag | Default | Description |
 | :--- | :--- | :--- |
 | `--stdio` | `true` | Communicate over standard input/output (`Content-Length` framed JSON-RPC 2.0). |
 | `--socket <PORT>` | — | Listen for a single LSP client connection on `127.0.0.1:<PORT>`. |

@@ -69,11 +69,15 @@ Intermediate `.ppu` and `.o` files are isolated in `.nik/cache/`, and the compil
 
 ::: code-group
 
-```powershell [Windows (PowerShell)]
+```powershell [Windows]
 .\bin\hello-nikrun.exe
 ```
 
-```bash [Linux / macOS]
+```bash [Linux]
+./bin/hello-nikrun
+```
+
+```bash [macOS]
 ./bin/hello-nikrun
 ```
 

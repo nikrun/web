@@ -23,7 +23,7 @@
 
 ## Overview
 
-- **Landing Page & Documentation (`src/`):** Interactive Object Pascal source-sheet landing page (`src/index.md`) alongside guides and CLI/manifest reference pages (`src/docs/`).
+- **Landing Page & Documentation (`src/`):** Unified VitePress landing page (`src/index.md`) sharing the same header, navigation, and design language as the user guides and CLI/manifest reference pages (`src/docs/`).
 - **Hosted CLI Install & Uninstall Endpoints (`src/public/`):** Published directly at the `https://nikrun.dev/` root:
   - **`install.ps1` / `install.sh`:** Resolves releases from [`nikrun/cli`](https://github.com/nikrun/cli) (`stable` or `insider` channel, optional pinned version), verifies SHA-256 checksums against `manifest.json`, extracts `nik` strictly in user scope (`~/.nikrun/bin` / `%USERPROFILE%\.nikrun\bin`), updates user `PATH`, and registers `Nikrun CLI` under Windows Installed Apps (`HKCU`).
   - **`uninstall.ps1` / `uninstall.sh`:** Stops running `nik` processes (such as `nik lsp`), removes the CLI binary, cleans up user `PATH` and Windows Registry entries, and supports `-Purge` / `--purge` or `-KeepData` / `--keep-data`.
