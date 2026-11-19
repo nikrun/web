@@ -281,13 +281,13 @@ body {
 }
 
 /* ==========================================================================
-   Documentation Layout — Uniform 48px Content Margins
+   Documentation Layout — Full Browser Width & Uniform 48px Content Margins
    ========================================================================== */
 
 @media (min-width: 960px) {
-  .VPSidebar {
-    bottom: var(--nik-footer-visible, 0px) !important;
-    padding-bottom: 32px !important;
+  .Layout > .VPSidebar.VPSidebar {
+    bottom: var(--nik-footer-visible, 0px);
+    padding-bottom: 32px;
   }
 
   #VPContent .VPDoc.has-sidebar {
@@ -321,5 +321,21 @@ body {
 
   #VPContent .VPDoc .aside-curtain {
     bottom: var(--nik-footer-visible, 0px);
+  }
+}
+
+@media (min-width: 1440px) {
+  .Layout > .VPSidebar.VPSidebar {
+    padding-left: 32px;
+    width: var(--vp-sidebar-width);
+  }
+
+  .Layout > .VPLocalNav.VPLocalNav.has-sidebar {
+    padding-left: var(--vp-sidebar-width);
+  }
+
+  #VPContent.has-sidebar {
+    padding-left: var(--vp-sidebar-width);
+    padding-right: 0;
   }
 }
