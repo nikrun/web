@@ -73,6 +73,9 @@ defineEmits<{
 .VPNavBar .nav-title :deep(.title) {
   height: calc(var(--vp-nav-height) - 1px);
   border-bottom: none;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .nav-search {

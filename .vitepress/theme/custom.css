@@ -7,6 +7,8 @@
     'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
   --vp-font-family-base: var(--vp-font-family-mono);
 
+  --vp-nav-logo-height: 40px;
+
   --vp-c-bg: #ffffff;
   --vp-c-bg-alt: #f8fafc;
   --vp-c-bg-elv: #ffffff;
