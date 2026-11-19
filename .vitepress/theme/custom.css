@@ -227,6 +227,7 @@ body {
   border-inline: none;
   padding: 6px 12px;
   line-height: 28px;
+  vertical-align: top;
 }
 
 .vp-doc :is(th, td):first-child {
@@ -235,4 +236,35 @@ body {
 
 .vp-doc :is(th, td):last-child {
   padding-right: var(--nik-code-px);
+}
+
+/* ==========================================================================
+   Documentation Layout — Uniform 48px Content Margins
+   ========================================================================== */
+
+@media (min-width: 960px) {
+  #VPContent .VPDoc.has-sidebar {
+    padding: 48px 48px 0;
+  }
+
+  #VPContent .VPDoc.has-sidebar .content {
+    flex: 1;
+    min-width: 0;
+    padding: 0 0 128px;
+  }
+
+  #VPContent .VPDoc.has-sidebar .content-container {
+    max-width: none;
+  }
+}
+
+@media (min-width: 1280px) {
+  #VPContent .VPDoc.has-sidebar {
+    padding-right: 32px;
+  }
+
+  #VPContent .VPDoc.has-sidebar .aside {
+    padding-left: 48px;
+    max-width: 272px;
+  }
 }
