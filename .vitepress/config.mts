@@ -90,7 +90,7 @@ export default defineConfig({
       dark: '/brand/nikrun-icon-dark-mono.svg',
       alt: 'Nikrun'
     },
-    siteTitle: 'nikrun',
+    siteTitle: 'Nikrun',
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Docs', link: '/docs/', activeMatch: '^/docs/' },
