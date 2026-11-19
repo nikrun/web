@@ -16,7 +16,7 @@ const { hasSidebar } = useSidebar()
     <div class="container">
       <p v-if="theme.footer.message" class="message" v-html="theme.footer.message"></p>
       <p v-if="theme.footer.copyright" class="copyright" v-html="theme.footer.copyright"></p>
-      <div v-if="!hasSidebar" class="footer-theme">
+      <div class="footer-theme">
         <NikThemeButton />
       </div>
     </div>
@@ -26,14 +26,10 @@ const { hasSidebar } = useSidebar()
 <style scoped>
 .VPFooter {
   position: relative;
-  z-index: var(--vp-z-index-footer);
+  z-index: calc(var(--vp-z-index-footer) + 1);
   border-top: 1px solid var(--vp-c-gutter);
   padding: 32px 24px;
   background-color: var(--vp-c-bg);
-}
-
-.VPFooter.has-sidebar {
-  display: none;
 }
 
 .VPFooter :deep(a) {
@@ -49,6 +45,20 @@ const { hasSidebar } = useSidebar()
 @media (min-width: 768px) {
   .VPFooter {
     padding: 32px;
+  }
+}
+
+@media (min-width: 960px) {
+  .VPFooter.has-sidebar {
+    padding-left: calc(var(--vp-sidebar-width) + 32px);
+    padding-right: 32px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .VPFooter.has-sidebar {
+    padding-left: calc((100% - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width) + 32px);
+    padding-right: calc((100% - var(--vp-layout-max-width)) / 2 + 32px);
   }
 }
 
