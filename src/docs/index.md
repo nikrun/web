@@ -31,7 +31,7 @@ Nikrun uses a fixed set of terms across the CLI, VS Code extension, and document
 
 Both the `nik` CLI and prebuilt Free Pascal SDKs run natively on 64-bit operating systems:
 
-| Operating System | `x86_64` | `aarch64` (ARM64) | Target Triplets |
+| Operating System | x86_64 | aarch64 (ARM64) | Target Triplets |
 | :--- | :---: | :---: | :--- |
 | **Windows** | Yes | Yes | `x86_64-win64`, `aarch64-win64` |
 | **Linux** | Yes | Yes | `x86_64-linux`, `aarch64-linux` |
@@ -41,7 +41,7 @@ Both the `nik` CLI and prebuilt Free Pascal SDKs run natively on 64-bit operatin
 
 Nikrun builds directly on the upstream Free Pascal compiler while targeting a different workflow than existing setup options. The official `freepascal.org` installers provide traditional system-wide installations, and `fpcupdeluxe` excels at compiling custom Free Pascal and Lazarus IDE setups locally from source. Nikrun is designed for developers and teams who want an instant, isolated CLI and VS Code workflow with zero system setup:
 
-| Aspect | Official `freepascal.org` Installers | `fpcupdeluxe` | **Nikrun** |
+| Aspect | Official freepascal.org Installers | fpcupdeluxe | Nikrun |
 | :--- | :--- | :--- | :--- |
 | **System impact** | Global OS installers, admin/root rights, global `/etc/fpc.cfg` and `PATH` | Compiles FPC and Lazarus locally from source | User scope only (`~/.nikrun`), no admin/root rights, prebuilt `.zip` SDKs |
 | **Parallel versions** | Static releases collide in global `PATH` / `fpc.cfg` | Supported via local source builds | Side-by-side `3.2.2`, `3.2.4`, `3.2.5`, and nightly `3.3.1` in seconds |

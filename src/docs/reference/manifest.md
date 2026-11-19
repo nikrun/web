@@ -45,7 +45,7 @@ Field-by-field schema reference for the **Project Manifest** (`nik.yaml`), **Loc
 
 Every `nik build` invocation starts with `-n @<sdk>/fpc.cfg -vq -viwn -vb -l-` plus `-FU<cacheDir>` and `-FE<outDir>`. Additional `build` keys map deterministically to `ppc*` flags:
 
-| Key | Type / Values | Default | Generated `ppc*` Flags |
+| Key | Type / Values | Default | Generated Compiler Flags |
 | :--- | :--- | :--- | :--- |
 | `mode` | `objfpc` \| `delphi` \| `delphiunicode` \| `fpc` \| `tp` \| `macpas` \| `iso` \| `extendedpascal` | `objfpc` | `-M<mode>` |
 | `modeSwitches` | `string[]` (e.g. `advancedRecords`, `typeHelpers`) | `[]` | `-M<switch>` per item |

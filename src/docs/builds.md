@@ -19,7 +19,7 @@ nik build -m path/to/nik.yaml    # Build a project in another directory
 
 `nik` automatically appends the native platform extension (and `lib` prefix on Unix shared libraries) when `output` in `nik.yaml` omits a file extension:
 
-| Project Type | `output` in `nik.yaml` | Windows (`win64`) | Linux (`linux`) | macOS (`darwin`) |
+| Project Type | output in nik.yaml | Windows (win64) | Linux (linux) | macOS (darwin) |
 | :--- | :--- | :--- | :--- | :--- |
 | **`program`** | `bin/my-app` *(default)* | `bin\my-app.exe` | `bin/my-app` | `bin/my-app` |
 | **`library`** | `bin/my-plugin` *(default)* | `bin\my-plugin.dll` | `bin/libmy-plugin.so` | `bin/libmy-plugin.dylib` |

@@ -68,7 +68,7 @@ Profiles customize compiler or toolchain settings for different workflows (selec
 
 `debug` and `release` provide built-in baseline defaults even if omitted from `nik.yaml`:
 
-| Setting | Built-in `debug` Default | Built-in `release` Default | Custom Profile Baseline |
+| Setting | Built-in debug Default | Built-in release Default | Custom Profile Baseline |
 | :--- | :--- | :--- | :--- |
 | `defines` | `[DEBUG]` | `[RELEASE]` | `[]` |
 | `debugInfo` | `dwarf2` (`-gl -gw2`) | `none` (`-g-`) | `none` |

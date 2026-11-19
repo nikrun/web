@@ -354,6 +354,14 @@ body {
   letter-spacing: -0.01em;
 }
 
+.vp-doc th code {
+  padding: 0;
+  background-color: transparent;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
+
 .vp-doc td {
   font-size: 14.5px;
 }
