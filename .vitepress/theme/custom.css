@@ -247,13 +247,13 @@ body {
     padding: 48px 48px 0;
   }
 
-  #VPContent .VPDoc.has-sidebar .content {
+  #VPContent .VPDoc.has-sidebar > .container > .content {
     flex: 1;
     min-width: 0;
     padding: 0 0 128px;
   }
 
-  #VPContent .VPDoc.has-sidebar .content-container {
+  #VPContent .VPDoc.has-sidebar > .container > .content > .content-container {
     max-width: none;
   }
 }
@@ -263,7 +263,7 @@ body {
     padding-right: 32px;
   }
 
-  #VPContent .VPDoc.has-sidebar .aside {
+  #VPContent .VPDoc.has-sidebar > .container > .aside {
     padding-left: 48px;
     max-width: 272px;
   }
