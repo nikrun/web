@@ -1,13 +1,58 @@
 /* ==========================================================================
-   Nikrun Website & Docs — Unified Dark Technical Theme
+   Nikrun Website & Docs — Unified Light & Dark Technical Theme
    ========================================================================== */
 
-:root,
-.dark {
+:root {
   --vp-font-family-mono: 'JetBrains Mono', 'Cascadia Code', 'Fira Code',
     'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
   --vp-font-family-base: var(--vp-font-family-mono);
 
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-alt: #f8fafc;
+  --vp-c-bg-elv: #ffffff;
+  --vp-c-bg-soft: #f1f5f9;
+
+  --vp-c-text-1: #0f172a;
+  --vp-c-text-2: #475569;
+  --vp-c-text-3: #64748b;
+
+  --vp-c-brand-1: #0284c7;
+  --vp-c-brand-2: #0369a1;
+  --vp-c-brand-3: #0284c7;
+  --vp-c-brand-soft: rgba(2, 132, 199, 0.12);
+
+  --vp-c-border: #cbd5e1;
+  --vp-c-divider: #e2e8f0;
+  --vp-c-gutter: #e2e8f0;
+
+  --vp-code-font-size: 1em;
+  --vp-code-line-height: 1.35;
+  --vp-code-bg: #f1f5f9;
+  --vp-code-color: var(--vp-c-text-1);
+  --vp-code-block-color: var(--vp-c-text-1);
+  --vp-code-block-bg: #f1f5f9;
+  --nik-code-tab-bg: #f8fafc;
+  --vp-code-copy-code-bg: #e2e8f0;
+  --vp-code-copy-code-hover-bg: #cbd5e1;
+
+  --nik-code-radius: 4px;
+  --nik-code-py: 3px;
+  --nik-code-px: 6px;
+
+  --vp-button-brand-text: #ffffff;
+  --vp-button-brand-bg: #0284c7;
+  --vp-button-brand-hover-text: #ffffff;
+  --vp-button-brand-hover-bg: #0369a1;
+  --vp-button-brand-active-text: #ffffff;
+  --vp-button-brand-active-bg: #075985;
+
+  --vp-button-alt-border: var(--vp-c-border);
+  --vp-button-alt-bg: var(--vp-c-bg-soft);
+  --vp-button-alt-hover-border: var(--vp-c-brand-1);
+  --vp-button-alt-hover-bg: var(--vp-c-bg-alt);
+}
+
+.dark {
   --vp-c-bg: #0b0e14;
   --vp-c-bg-alt: #0e121a;
   --vp-c-bg-elv: #10151f;
@@ -26,17 +71,13 @@
   --vp-c-divider: #1e2736;
   --vp-c-gutter: #1e2736;
 
-  --vp-code-font-size: 1em;
-  --vp-code-line-height: 1.35;
   --vp-code-bg: #161e2b;
   --vp-code-color: var(--vp-c-text-1);
+  --vp-code-block-color: var(--vp-c-text-1);
   --vp-code-block-bg: #161e2b;
+  --nik-code-tab-bg: #10151f;
   --vp-code-copy-code-bg: #1d2738;
   --vp-code-copy-code-hover-bg: #243044;
-
-  --nik-code-radius: 4px;
-  --nik-code-py: 3px;
-  --nik-code-px: 6px;
 
   --vp-button-brand-text: #0b0e14;
   --vp-button-brand-bg: #38bdf8;
@@ -44,11 +85,10 @@
   --vp-button-brand-hover-bg: #7dd3fc;
   --vp-button-brand-active-text: #0b0e14;
   --vp-button-brand-active-bg: #0ea5e9;
+}
 
-  --vp-button-alt-border: var(--vp-c-border);
-  --vp-button-alt-bg: var(--vp-c-bg-soft);
-  --vp-button-alt-hover-border: var(--vp-c-brand-1);
-  --vp-button-alt-hover-bg: var(--vp-c-bg-alt);
+.VPNavScreen .VPNavScreenAppearance {
+  display: none;
 }
 
 body {
@@ -99,7 +139,7 @@ body {
   height: 30px;
   padding: 0 12px;
   border-radius: var(--nik-code-radius) var(--nik-code-radius) 0 0;
-  background-color: var(--vp-c-bg-soft);
+  background-color: var(--nik-code-tab-bg);
   color: var(--vp-c-text-2);
 }
 

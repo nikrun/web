@@ -20,13 +20,14 @@ export default defineConfig({
   description: siteDescription,
   srcDir: 'src',
   cleanUrls: true,
-  appearance: 'force-dark',
+  appearance: true,
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     ['link', { rel: 'icon', type: 'image/x-icon', sizes: 'any', href: '/favicon.ico' }],
     ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }],
-    ['meta', { name: 'theme-color', content: '#0b0e14' }],
+    ['meta', { name: 'theme-color', media: '(prefers-color-scheme: light)', content: '#ffffff' }],
+    ['meta', { name: 'theme-color', media: '(prefers-color-scheme: dark)', content: '#0b0e14' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:site_name', content: 'Nikrun' }],
     ['meta', { property: 'og:title', content: siteTitle }],
@@ -43,7 +44,10 @@ export default defineConfig({
   ],
 
   markdown: {
-    theme: 'github-dark',
+    theme: {
+      light: 'github-light',
+      dark: 'github-dark'
+    },
     config(md) {
       const origCodeGroupOpen = md.renderer.rules['container_code-group_open']
       if (origCodeGroupOpen) {
@@ -69,6 +73,12 @@ export default defineConfig({
           replacement: fileURLToPath(
             new URL('./theme/components/NikNavBar.vue', import.meta.url)
           )
+        },
+        {
+          find: /^.*\/VPFooter\.vue$/,
+          replacement: fileURLToPath(
+            new URL('./theme/components/NikFooter.vue', import.meta.url)
+          )
         }
       ]
     }
@@ -76,7 +86,8 @@ export default defineConfig({
 
   themeConfig: {
     logo: {
-      src: '/brand/nikrun-icon-dark-mono.svg',
+      light: '/brand/nikrun-icon-light.svg',
+      dark: '/brand/nikrun-icon-dark-mono.svg',
       alt: 'Nikrun'
     },
     siteTitle: 'nikrun',
