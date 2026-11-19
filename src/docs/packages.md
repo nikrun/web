@@ -1,6 +1,6 @@
 # Packages
 
-Nikrun uses a decentralized, source-first package model. Dependencies are declared directly in `nik.yaml`—referencing local paths, Git repositories, or static archives—without requiring a central package registry.
+Nikrun uses a decentralized, source-first package model that requires no central package registry. Dependencies are declared directly in `nik.yaml` and can reference local directories, Git repositories, or static archive URLs. Resolved versions and SHA-256 checksums are pinned in `nik.lock` for reproducible builds across machines and CI.
 
 ## Declaration
 
@@ -39,12 +39,12 @@ dependencies:
 
 `nik` determines the dependency kind strictly from the prefix and suffix:
 
-| Prefix | Suffix / `@` | Source Kind | Notes |
+| Kind | Prefix | Suffix | Notes |
 | :--- | :--- | :--- | :--- |
-| `./`, `../`, `/`, `\`, `<Drive>:` | *(directory)* | Local path (`path`) | Compiled directly from disk; not written to `nik.lock`. |
-| `./`, `../`, `/`, `\`, `<Drive>:` | `.zip`, `.tar.gz`, `.tgz` | Local archive (`local-archive`) | Extracted to the package cache and SHA-256 recorded in `nik.lock`. |
-| `https://`, `http://`, `ssh://`, `file:///` | `@<semver>` or `@<commit>` | Git repository (`git`) | Moving branch names (e.g. `@main`) are rejected for reproducibility. |
-| `https://`, `http://`, `ssh://`, `file:///` | `.zip`, `.tar.gz`, `.tgz` | Remote archive (`archive`) | Downloaded to the package cache and SHA-256 recorded in `nik.lock`. |
+| Local path | `./`<br>`../`<br>`/`<br>`\`<br>`<Drive>:` | *(directory)* | Compiled directly from disk; not written to `nik.lock`. |
+| Local archive | `./`<br>`../`<br>`/`<br>`\`<br>`<Drive>:` | `.zip`<br>`.tar.gz`<br>`.tgz` | Extracted to the package cache and SHA-256 recorded in `nik.lock`. |
+| Git repository | `https://`<br>`http://`<br>`ssh://`<br>`file:///` | `@<semver>`<br>`@<commit>` | Moving branch names (e.g. `@main`) are rejected for reproducibility. |
+| Remote archive | `https://`<br>`http://`<br>`ssh://`<br>`file:///` | `.zip`<br>`.tar.gz`<br>`.tgz` | Downloaded to the package cache and SHA-256 recorded in `nik.lock`. |
 
 > [!TIP]
 > To inspect a Git repository's available SemVer tags, current `HEAD` commit hash, and ready-to-paste `nik.yaml` snippet, run:
