@@ -283,6 +283,11 @@ body {
    ========================================================================== */
 
 @media (min-width: 960px) {
+  .VPSidebar {
+    bottom: var(--nik-footer-visible, 0px) !important;
+    padding-bottom: 32px !important;
+  }
+
   #VPContent .VPDoc.has-sidebar {
     padding: 48px 48px 0;
   }
@@ -306,5 +311,13 @@ body {
   #VPContent .VPDoc.has-sidebar > .container > .aside {
     padding-left: 48px;
     max-width: 272px;
+  }
+
+  #VPContent .VPDoc .aside-container {
+    height: calc(100vh - var(--nik-footer-visible, 0px));
+  }
+
+  #VPContent .VPDoc .aside-curtain {
+    bottom: var(--nik-footer-visible, 0px);
   }
 }

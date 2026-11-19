@@ -1,17 +1,72 @@
 <script setup lang="ts">
-import { useData } from 'vitepress'
-import { useSidebar } from 'vitepress/theme'
+import { inBrowser, useData, useRoute } from 'vitepress'
+import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import NikThemeButton from './NikThemeButton.vue'
 
 const { theme, frontmatter } = useData()
-const { hasSidebar } = useSidebar()
+const route = useRoute()
+const footerEl = ref<HTMLElement | null>(null)
+
+let resizeObserver: ResizeObserver | null = null
+let rafId = 0
+
+function updateFooterVisible() {
+  if (!inBrowser) return
+  if (!footerEl.value) {
+    document.documentElement.style.setProperty('--nik-footer-visible', '0px')
+    return
+  }
+  const rect = footerEl.value.getBoundingClientRect()
+  const visible = Math.max(0, Math.min(rect.height, window.innerHeight - rect.top))
+  document.documentElement.style.setProperty('--nik-footer-visible', `${Math.round(visible)}px`)
+}
+
+function scheduleUpdate() {
+  if (!inBrowser || rafId) return
+  rafId = window.requestAnimationFrame(() => {
+    rafId = 0
+    updateFooterVisible()
+  })
+}
+
+onMounted(() => {
+  updateFooterVisible()
+  window.addEventListener('scroll', updateFooterVisible, { passive: true })
+  window.addEventListener('resize', updateFooterVisible, { passive: true })
+  if (typeof ResizeObserver !== 'undefined') {
+    resizeObserver = new ResizeObserver(scheduleUpdate)
+    resizeObserver.observe(document.body)
+    if (footerEl.value) {
+      resizeObserver.observe(footerEl.value)
+    }
+  }
+})
+
+onUnmounted(() => {
+  if (!inBrowser) return
+  if (rafId) {
+    window.cancelAnimationFrame(rafId)
+    rafId = 0
+  }
+  window.removeEventListener('scroll', updateFooterVisible)
+  window.removeEventListener('resize', updateFooterVisible)
+  resizeObserver?.disconnect()
+  document.documentElement.style.removeProperty('--nik-footer-visible')
+})
+
+watch(
+  () => route.path,
+  () => {
+    nextTick(scheduleUpdate)
+  }
+)
 </script>
 
 <template>
   <footer
     v-if="theme.footer && frontmatter.footer !== false"
+    ref="footerEl"
     class="VPFooter"
-    :class="{ 'has-sidebar': hasSidebar }"
   >
     <div class="container">
       <p v-if="theme.footer.message" class="message" v-html="theme.footer.message"></p>
@@ -26,10 +81,17 @@ const { hasSidebar } = useSidebar()
 <style scoped>
 .VPFooter {
   position: relative;
-  z-index: calc(var(--vp-z-index-footer) + 1);
+  z-index: var(--vp-z-index-footer);
+  width: 100%;
   border-top: 1px solid var(--vp-c-gutter);
   padding: 32px 24px;
   background-color: var(--vp-c-bg);
+}
+
+@media (min-width: 960px) {
+  .VPFooter {
+    z-index: calc(var(--vp-z-index-sidebar) + 1);
+  }
 }
 
 .VPFooter :deep(a) {
@@ -45,20 +107,6 @@ const { hasSidebar } = useSidebar()
 @media (min-width: 768px) {
   .VPFooter {
     padding: 32px;
-  }
-}
-
-@media (min-width: 960px) {
-  .VPFooter.has-sidebar {
-    padding-left: calc(var(--vp-sidebar-width) + 32px);
-    padding-right: 32px;
-  }
-}
-
-@media (min-width: 1440px) {
-  .VPFooter.has-sidebar {
-    padding-left: calc((100% - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width) + 32px);
-    padding-right: calc((100% - var(--vp-layout-max-width)) / 2 + 32px);
   }
 }
 
