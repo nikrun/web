@@ -104,13 +104,13 @@ program:
 
 :::
 
-## Ecosystem & Supported Platforms
+## Toolchain & Platforms
 
 Both the `nik` CLI and prebuilt Free Pascal SDKs run natively across 64-bit desktop, server, and CI environments:
 
-| Component | Repository | Description |
+| Name | Repository | Description |
 | :--- | :--- | :--- |
-| **CLI (`nik`)** | [`nikrun/cli`](https://github.com/nikrun/cli) | Dependency-free native Object Pascal binary managing SDKs, scaffolding, builds, packages, and `nik lsp`. |
+| **`nik` CLI** | [`nikrun/cli`](https://github.com/nikrun/cli) | Dependency-free native Object Pascal binary managing SDKs, scaffolding, builds, packages, and `nik lsp`. |
 | **Free Pascal SDKs** | [`nikrun/sdk`](https://github.com/nikrun/sdk) | Automated portable SDK builds (`3.2.2` to nightly `3.3.1`) for `x86_64` and `aarch64` across Windows, Linux, and macOS. |
 | **Nikrun for VS Code** | [`nikrun/vscode`](https://github.com/nikrun/vscode) | Official extension (`nikrun.vscode`) with live `nik lsp` diagnostics, RTL navigation, status-bar switchers, and `nik.yaml` validation. |
 

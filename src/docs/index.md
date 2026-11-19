@@ -2,17 +2,21 @@
 
 **Nikrun** is a user-scope toolchain for **Free Pascal & Object Pascal**. It combines a dependency-free native CLI (`nik`), prebuilt portable Free Pascal SDKs (`nik sdk`), a declarative project manifest (`nik.yaml`), decentralized package management (`nik pkg`), a built-in Language Server (`nik lsp`), and an official VS Code extension.
 
-## Ecosystem Components
+## Toolchain
 
-| Component | Repository | Purpose |
+| Name | Repository | Purpose |
 | :--- | :--- | :--- |
-| **CLI** | [`nikrun/cli`](https://github.com/nikrun/cli) | Standalone native `nik` binary managing SDKs, project scaffolding, builds, packages, and LSP. |
-| **SDKs** | [`nikrun/sdk`](https://github.com/nikrun/sdk) | Prebuilt, SHA-256-verified Free Pascal archives (`3.2.2` to nightly `3.3.1`) with bundled RTL and package sources. |
-| **VS Code Extension** | [`nikrun/vscode`](https://github.com/nikrun/vscode) | Zero-config IDE integration with status-bar SDK/profile switchers, build tasks, and `nik.yaml` validation. |
+| **`nik` CLI** | [`nikrun/cli`](https://github.com/nikrun/cli) | Standalone native `nik` binary managing SDKs, project scaffolding, builds, packages, and `nik lsp`. |
+| **Free Pascal SDKs** | [`nikrun/sdk`](https://github.com/nikrun/sdk) | Prebuilt, SHA-256-verified Free Pascal archives (`3.2.2` to nightly `3.3.1`) with bundled RTL and package sources. |
+| **Nikrun for VS Code** | [`nikrun/vscode`](https://github.com/nikrun/vscode) | Official extension (`nikrun.vscode`) with live `nik lsp` diagnostics, status-bar SDK/profile switchers, build tasks, and `nik.yaml` validation. |
 
-## Core Terminology
+## Packages
 
-Nikrun uses a fixed set of terms across the CLI, VS Code extension, and documentation:
+Nikrun uses a decentralized, source-first package model (`nik pkg`) with no central registry requirement. Dependencies in `nik.yaml` reference Git repositories (`@<semver>` or `@<commit>`), archive URLs, or local paths directly, resolved via Minimal Version Selection and pinned with cryptographic SHA-256 hashes in `nik.lock`. Any Git repository with a `package:` manifest is ready to consume—and existing Free Pascal & Object Pascal repositories without `nik.yaml` work directly via `unitPaths` mappings. See [Packages](./packages) for details.
+
+## Terminology
+
+Nikrun uses a fixed set of terms across the `nik` CLI, VS Code extension, and documentation:
 
 | Term | File / Location | Meaning |
 | :--- | :--- | :--- |
@@ -27,7 +31,7 @@ Nikrun uses a fixed set of terms across the CLI, VS Code extension, and document
 | **Build Cache** | `.nik/cache/` | Project-local directory storing compiled `.ppu` and `.o` files per SDK and profile. |
 | **Package Cache** | `~/.nikrun/cache/pkg/` | Read-only user-scope directory storing downloaded package sources. |
 
-## Supported Platforms
+## Platforms
 
 Both the `nik` CLI and prebuilt Free Pascal SDKs run natively on 64-bit operating systems:
 
