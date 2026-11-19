@@ -3,9 +3,12 @@
    ========================================================================== */
 
 :root {
-  --vp-font-family-mono: 'JetBrains Mono', 'Cascadia Code', 'Fira Code',
-    'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-  --vp-font-family-base: var(--vp-font-family-mono);
+  --vp-font-family-base: 'Geist Variable', ui-sans-serif, system-ui,
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --vp-font-family-mono: 'Geist Mono Variable', 'JetBrains Mono',
+    'Cascadia Code', 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono',
+    Menlo, monospace;
 
   --vp-nav-logo-height: 40px;
 
@@ -27,8 +30,8 @@
   --vp-c-divider: #e2e8f0;
   --vp-c-gutter: #e2e8f0;
 
-  --vp-code-font-size: 1em;
-  --vp-code-line-height: 1.35;
+  --vp-code-font-size: 0.875em;
+  --vp-code-line-height: 1.45;
   --vp-code-bg: #f1f5f9;
   --vp-code-color: var(--vp-c-text-1);
   --vp-code-block-color: var(--vp-c-text-1);
@@ -38,7 +41,7 @@
   --vp-code-copy-code-hover-bg: #cbd5e1;
 
   --nik-code-radius: 4px;
-  --nik-code-py: 3px;
+  --nik-code-py: 4px;
   --nik-code-px: 6px;
 
   --vp-button-brand-text: #ffffff;
@@ -94,7 +97,44 @@
 }
 
 body {
-  font-size: 14px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.vp-doc p,
+.vp-doc li {
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   Hybrid Technical Accents (Monospace Chrome & Structural Kickers)
+   ========================================================================== */
+
+.VPNavBarTitle .title {
+  font-family: var(--vp-font-family-mono);
+  font-size: 15.5px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.DocSearch-Button .DocSearch-Button-Key,
+.DocSearch-Button .DocSearch-Button-Key:first-child::after {
+  font-family: var(--vp-font-family-mono);
+  font-size: 11px;
+}
+
+.VPSidebarItem.level-0 > .item > .text,
+.VPDocAsideOutline .outline-title {
+  font-family: var(--vp-font-family-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-3);
+}
+
+.VPSidebarItem.level-0.has-active > .item > .text {
+  color: var(--vp-c-text-2);
 }
 
 /* ==========================================================================
@@ -103,10 +143,16 @@ body {
 
 :is(.vp-doc, .vp-doc .custom-block, .VPHero, .VPFeatures) :not(pre, a) > code {
   border-radius: var(--nik-code-radius);
-  padding: var(--nik-code-py) var(--nik-code-px);
+  padding: 2px var(--nik-code-px);
   background-color: var(--vp-code-bg);
   font-size: var(--vp-code-font-size);
   color: var(--vp-code-color);
+}
+
+.vp-doc a > code {
+  border-radius: var(--nik-code-radius);
+  padding: 2px var(--nik-code-px);
+  font-size: var(--vp-code-font-size);
 }
 
 .vp-doc div[class*='language-'],
@@ -121,6 +167,7 @@ body {
 
 .vp-doc [class*='language-'] code {
   padding: 0 var(--nik-code-px);
+  font-size: 13.5px;
 }
 
 .vp-doc .vp-code-group {
@@ -142,6 +189,8 @@ body {
   padding: 0 12px;
   border-radius: var(--nik-code-radius) var(--nik-code-radius) 0 0;
   background-color: var(--nik-code-tab-bg);
+  font-family: var(--vp-font-family-mono);
+  font-size: 12.5px;
   color: var(--vp-c-text-2);
 }
 
@@ -174,23 +223,25 @@ body {
 .vp-doc [class*='language-'] > span.lang {
   top: var(--nik-code-py);
   right: var(--nik-code-px);
+  font-family: var(--vp-font-family-mono);
   line-height: var(--vp-code-line-height);
-  font-size: 0.8em;
+  font-size: 11.5px;
 }
 
 .vp-doc [class*='language-'] > button.copy {
-  top: 2px;
-  right: 2px;
-  width: 1.5em;
-  height: 1.5em;
-  background-size: 1em;
+  top: 3px;
+  right: 3px;
+  width: 22px;
+  height: 22px;
+  background-size: 14px;
 }
 
 .vp-doc [class*='language-'] > button.copy.copied::before,
 .vp-doc [class*='language-'] > button.copy:hover.copied::before {
   height: calc(100% + 2px);
   padding: 0 var(--nik-code-px);
-  font-size: 0.8em;
+  font-family: var(--vp-font-family-mono);
+  font-size: 11.5px;
 }
 
 /* ==========================================================================
@@ -211,24 +262,27 @@ body {
 .VPHome .VPHero .name {
   max-width: none;
   margin-bottom: 10px;
-  font-size: 13px;
+  font-family: var(--vp-font-family-mono);
+  font-size: 12.5px;
+  font-weight: 600;
   line-height: 20px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .VPHome .VPHero .text {
-  font-size: clamp(26px, 4vw, 34px);
-  line-height: 1.3;
+  font-family: var(--vp-font-family-mono);
+  font-size: clamp(26px, 3.8vw, 36px);
+  line-height: 1.25;
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 
 .VPHome .VPHero .tagline {
   max-width: 780px;
   padding-top: 16px;
-  font-size: 15px;
-  line-height: 26px;
+  font-size: 16px;
+  line-height: 1.65;
   font-weight: 400;
 }
 
@@ -236,7 +290,10 @@ body {
   border-radius: 6px;
   padding: 0 18px;
   line-height: 36px;
+  font-family: var(--vp-font-family-mono);
   font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .VPHome .VPFeatures .VPFeature {
@@ -247,6 +304,24 @@ body {
 
 .VPHome .VPFeatures .VPFeature.link:hover {
   background-color: var(--vp-c-bg-soft);
+}
+
+.VPHome .VPFeatures .VPFeature .title {
+  font-size: 15.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.VPHome .VPFeatures .VPFeature .details {
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.VPHome .VPFeatures .VPFeature .link-text-value {
+  font-family: var(--vp-font-family-mono);
+  font-size: 12.5px;
+  font-weight: 500;
 }
 
 /* ==========================================================================
@@ -267,9 +342,20 @@ body {
 .vp-doc th,
 .vp-doc td {
   border-inline: none;
-  padding: 6px 12px;
-  line-height: 28px;
+  padding: 7px 12px;
+  line-height: 1.65;
   vertical-align: top;
+}
+
+.vp-doc th {
+  font-family: var(--vp-font-family-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.vp-doc td {
+  font-size: 14.5px;
 }
 
 .vp-doc :is(th, td):first-child {
